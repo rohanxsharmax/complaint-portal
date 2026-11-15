@@ -42,10 +42,6 @@ A simple, modern, and fully client-side **Complaint Management System** that all
 
 - **HTML5**
 - **CSS3** (Responsive design)
-- **Vanilla JavaScript**
+- **JavaScript**
 - **localStorage** (No backend / database required)
 - Deployed on **Vercel**
-
----
-
-## Project Structure
