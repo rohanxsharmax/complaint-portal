@@ -1,7 +1,7 @@
 // This project uses localStorage instead of a database.
 // Complaints are saved in the browser after they are submitted.
 
-const storageKey = "simpleComplaintPortal";
+const storageKey = "simpleComplaintPortalV2";
 
 const exampleComplaints = [
   {
@@ -25,7 +25,7 @@ const exampleComplaints = [
     subject: "Incorrect amount on invoice",
     description: "The invoice includes an extra charge.",
     attachment: "invoice.pdf",
-    status: "Open",
+    status: "Resolved",
     date: "2026-11-04"
   }
 ];
@@ -77,13 +77,6 @@ function showComplaints() {
       <td>${item.priority}</td>
       <td><span class="status ${statusClass(item.status)}">${item.status}</span></td>
       <td>${item.date}</td>
-      <td>
-        <select class="status-select" data-id="${item.id}" aria-label="Update ${item.id}">
-          <option ${item.status === "Open" ? "selected" : ""}>Open</option>
-          <option ${item.status === "In Progress" ? "selected" : ""}>In Progress</option>
-          <option ${item.status === "Resolved" ? "selected" : ""}>Resolved</option>
-        </select>
-      </td>
     `;
     tableBody.appendChild(row);
   });
@@ -120,16 +113,6 @@ form.addEventListener("submit", event => {
 
 searchInput.addEventListener("input", showComplaints);
 statusFilter.addEventListener("change", showComplaints);
-
-tableBody.addEventListener("change", event => {
-  if (!event.target.classList.contains("status-select")) return;
-
-  const complaint = complaints.find(item => item.id === event.target.dataset.id);
-  complaint.status = event.target.value;
-  saveComplaints();
-  updateDashboard();
-  showComplaints();
-});
 
 document.querySelector("#trackButton").addEventListener("click", () => {
   const trackingId = document.querySelector("#trackingInput").value.trim().toUpperCase();
