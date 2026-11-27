@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+/* Makes the "hidden" attribute work even on elements that have their own display style */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -39,6 +44,7 @@ header h1 {
 
 nav {
   display: flex;
+  align-items: center;
   gap: 16px;
 }
 
@@ -50,6 +56,23 @@ nav a {
 
 nav a:hover {
   text-decoration: underline;
+}
+
+.user-label {
+  color: white;
+  font-size: .85rem;
+  opacity: .9;
+}
+
+.logout-button {
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, .7);
+  background: rgba(255, 255, 255, .15);
+  font-size: .85rem;
+}
+
+.logout-button:hover {
+  background: rgba(255, 255, 255, .3);
 }
 
 .welcome {
@@ -100,6 +123,26 @@ h2 {
   padding: 24px;
 }
 
+.login-box {
+  max-width: 460px;
+  margin: 40px auto 24px;
+}
+
+.login-box > p:first-of-type {
+  margin-top: 0;
+}
+
+.login-box form {
+  margin-top: 14px;
+}
+
+.login-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
 form {
   display: grid;
   gap: 15px;
@@ -147,6 +190,19 @@ button:hover {
   background: #125ca5;
 }
 
+.link-button {
+  padding: 0;
+  color: #1976d2;
+  background: none;
+  font-size: .9rem;
+  text-decoration: underline;
+}
+
+.link-button:hover {
+  color: #125ca5;
+  background: none;
+}
+
 .track-area {
   display: flex;
   max-width: 520px;
@@ -168,7 +224,7 @@ button:hover {
 
 table {
   width: 100%;
-  min-width: 760px;
+  min-width: 700px;
   border-collapse: collapse;
 }
 
@@ -182,10 +238,6 @@ th, td {
 th {
   color: #fff;
   background: #455a64;
-}
-
-td select {
-  padding: 6px;
 }
 
 .status {
